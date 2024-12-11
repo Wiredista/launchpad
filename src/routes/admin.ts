@@ -4,7 +4,7 @@ import fs from "fs";
 import db from "../db";
 
 const adminPanelRouter = express.Router();
-adminPanelRouter.use(express.json());
+adminPanelRouter.use(express.json({ limit: "50mb" })); // Allow large images
 adminPanelRouter.use(express.urlencoded({ extended: true }));
 
 
