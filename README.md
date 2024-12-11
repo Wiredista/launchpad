@@ -1,10 +1,10 @@
 # 🚀 WebCards LaunchPad
 
+> **Note:** 📢 This project is a work in progress and some features may not be fully implemented yet.
+
 WebCards LaunchPad is a web application that allows you to create and manage cards with links to your favorite websites, self hosted services, or anything else you want to have quick access to.
 
 ## 📋 Features
-
-> **Note:** This project is a work in progress and some features may not be fully implemented yet.
 
 Current features include:
 - Cards with custom titles, images, and links
@@ -48,6 +48,8 @@ bun run src/index.ts
 ```
 
 Web interface will be available at `http://localhost:3000/` and admin panel at `http://localhost:3001/`.
+
+Default password is `insecure`. You can change it on the admin panel.
 
 ### ⛅ Production
 
