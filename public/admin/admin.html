@@ -29,10 +29,6 @@
             <label for="title">Title</label>
             <input type="text" class="form-control" id="title" placeholder="Enter title">
         </div>
-        <div class="mb-3">
-            <label for="admin-link">Admin panel link</label>
-            <input type="text" class="form-control" id="admin-link" placeholder="Enter link URL">
-        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
@@ -128,8 +124,7 @@
                 method: 'DELETE'
             });
 
-            if (response.status == 'ok') alert('Card deleted successfully');
-            else alert('Error deleting card');
+            if (response.status != 'ok') alert('Error deleting card');
 
             loadCards();
         }
