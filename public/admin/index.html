@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/dist/js/jquery-3.7.1.min.js"></script>
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="m-0 p-0">
+    <!-- Header -->
+    <script>
+        const header = $.ajax({
+            url: '/components/header.html',
+            async: false
+        }).responseText;
+
+        $(document.currentScript).replaceWith(header);
+    </script>
+
+    <!-- Login form -->
+    <form class="container card p-3 mb-5">
+        <h2 class="h2 mb-3 text-center">Login</h2>
+        <div class="mb-3">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <!-- Footer -->
+    <script>
+        const footer = $.ajax({
+            url: '/components/footer.html',
+            async: false
+        }).responseText;
+
+        $(document.currentScript).replaceWith(footer);
+    </script>
+
+    <!-- Script -->
+    <script src="/js/common.js"></script>
+    <script>
+        checkAuth("admin.html", true);
+        
+        // Login form
+        $("form").submit(async function(event) {
+            event.preventDefault();
+
+            const password = $("#password").val();
+
+            if (!password) {
+                alert('Please fill all fields');
+                return;
+            }
+
+            const response = await fetchAdminApi('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    password: password
+                })
+            });
+
+            if (response.token){
+                const token = response.token;
+                localStorage.setItem('token', token);
+                window.location.href = 'admin.html';
+            } else {
+                alert('Invalid password');
+            }
+        });
+    </script>
+</body>

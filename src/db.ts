@@ -29,4 +29,11 @@ db.run(`
     INSERT INTO config (title, admin_panel, password) VALUES ("Home Cards", "http://localhost:3001", "insecure");
     `)
 
+
+// db.run(`CREATE TABLE IF NOT EXISTS config (
+//         key TEXT PRIMARY KEY,
+//         value TEXT NOT NULL
+//     );
+//     `)
+
 export default db;
