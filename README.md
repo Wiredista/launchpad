@@ -17,10 +17,8 @@ Future features may include:
 - Download favicon for links
 
 ## 📷 Screenshots
-Home page
 ![Home page](https://github.com/user-attachments/assets/95aa26dd-7ce1-475c-9c8b-9dbbd04580ae)
 
-Admin Panel
 ![Admin panel](https://github.com/user-attachments/assets/b59f6874-9e95-42d1-b0be-c4917bbfef65)
 
 
