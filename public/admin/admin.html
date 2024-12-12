@@ -160,7 +160,7 @@
             event.preventDefault();
 
             const title = $("#title").val();
-            const admin_link = $("#admin-link").val();
+            const admin_link = "Temporary fix :) Will be used later for the extra button";
 
             if (!title || !admin_link) {
                 alert('Please fill all fields');
@@ -178,7 +178,7 @@
                 })
             });
 
-            if (response.ok) alert('Config updated successfully');
+            if (response.status == "ok") alert('Config updated successfully');
             else alert('Error updating config');
 
             window.location.reload();
@@ -247,9 +247,11 @@
             });
 
             console.log(response);
-            if (response.status == 'ok') alert('Card created successfully');
-            else alert('Error creating card');
-
+            if (response.status != 'ok') alert('Error creating card');
+            
+            $("#name").val('');
+            $("#image").val('');
+            $("#link").val('');
             loadCards();
         });
     
