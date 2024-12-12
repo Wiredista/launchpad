@@ -19,6 +19,15 @@ Future features may include:
 - Unified web interface for users and admins
 - Download favicon for links
 
+## 📷 Screenshots
+Home page
+![Home page](https://github.com/user-attachments/assets/95aa26dd-7ce1-475c-9c8b-9dbbd04580ae)
+
+Admin Panel
+![Admin panel](https://github.com/user-attachments/assets/b59f6874-9e95-42d1-b0be-c4917bbfef65)
+
+
+
 ## 📡 Running the project
 
 ### 💻 Development
@@ -34,7 +43,7 @@ After installing `bun`, you can follow these steps to run the project:
 
 Clone the repository:
 ```bash
-git clone URL
+git clone https://github.com/Wiredista/webcards-launchpad.git
 ```
 
 Install dependencies:
@@ -55,12 +64,12 @@ Default password is `insecure`. You can change it on the admin panel.
 
 The recommended way to run the project in production is using [Docker](https://www.docker.com/). You can build the image with the following command:
 ```bash
-docker build -t home-cards .
+docker build -t webcards-launchpad https://github.com/Wiredista/webcards-launchpad.git#main
 ```
 
 Then you can run the image with:
 ```bash
-docker run -p 3000:3000 -p 3001:3001 home-cards
+docker run -p 3000:3000 webcards-launchpad
 ```
 
 Alternatively, you can use [Docker Compose](https://docs.docker.com/compose/install/) to run the project. To do so, build the image as described above and then follow these steps:
@@ -70,10 +79,9 @@ Create a `docker-compose.yml` file with the following content:
 ```yaml
 services:
   home-cards:
-    image: home-cards
+    build: https://github.com/Wiredista/webcards-launchpad.git#main
     ports:
       - "3000:3000"
-      - "3001:3001"
     volumes:
       - ./data:/app/data
 ```
@@ -83,7 +91,7 @@ Then run the project with:
 docker compose up -d
 ```
 
-In both cases, the web interface will be available at `http://localhost:3000/` and admin panel at `http://localhost:3001/`.
+In both cases, the web interface will be available at `http://localhost:3000/`.
 
 If you're running the project in a server, make sure to replace `localhost` with the server's IP address.
 
