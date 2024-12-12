@@ -56,7 +56,7 @@ Then run the project:
 bun run src/index.ts
 ```
 
-Web interface will be available at `http://localhost:3000/` and admin panel at `http://localhost:3001/`.
+Web interface will be available at `http://localhost:3000/`.
 
 Default password is `insecure`. You can change it on the admin panel.
 
@@ -72,8 +72,7 @@ Then you can run the image with:
 docker run -p 3000:3000 webcards-launchpad
 ```
 
-Alternatively, you can use [Docker Compose](https://docs.docker.com/compose/install/) to run the project. To do so, build the image as described above and then follow these steps:
-
+Alternatively, you can use [Docker Compose](https://docs.docker.com/compose/install/) to run the project.  To do so, follow these steps.
 
 Create a `docker-compose.yml` file with the following content:
 ```yaml
