@@ -7,16 +7,13 @@ WebCards LaunchPad is a web application that allows you to create and manage car
 ## 📋 Features
 
 Current features include:
-- Cards with custom titles, images, and links
-- Admin panel to manage cards
-- Separate web interfaces for users and admins
-- Admin authentication with custom password
+- Cards with custom titles, images, and links.
+- Administrator panel for configuration and card management.
+- Password protection on administrator panel.
 
 Future features may include:
 - Editing and reordering cards
-- Customizing the web interface
 - Easy backup and restore of data
-- Unified web interface for users and admins
 - Download favicon for links
 
 ## 📷 Screenshots
