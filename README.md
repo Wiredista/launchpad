@@ -1,8 +1,8 @@
-# 🚀 WebCards LaunchPad
+# 🚀 LaunchPad
 
 > **Note:** 📢 This project is a work in progress and some features may not be fully implemented yet.
 
-WebCards LaunchPad is a web application that allows you to create and manage cards with links to your favorite websites, self hosted services, or anything else you want to have quick access to.
+LaunchPad is a web application that allows you to create and manage cards with links to your favorite websites, self hosted services, or anything else you want to have quick access to.
 
 ## 📋 Features
 
@@ -38,7 +38,7 @@ After installing `bun`, you can follow these steps to run the project:
 
 Clone the repository:
 ```bash
-git clone https://github.com/Wiredista/webcards-launchpad.git
+git clone https://github.com/Wiredista/launchpad.git
 ```
 
 Install dependencies:
@@ -53,18 +53,18 @@ bun run src/index.ts
 
 Web interface will be available at `http://localhost:3000/`.
 
-Default password is `insecure`. You can change it on the admin panel.
+Default password is `changeme`. You can change it on the admin panel.
 
 ### ⛅ Production
 
 The recommended way to run the project in production is using [Docker](https://www.docker.com/). You can build the image with the following command:
 ```bash
-docker build -t webcards-launchpad https://github.com/Wiredista/webcards-launchpad.git#main
+docker build -t launchpad https://github.com/Wiredista/launchpad.git#main
 ```
 
 Then you can run the image with:
 ```bash
-docker run -p 3000:3000 webcards-launchpad
+docker run -p 3000:3000 launchpad
 ```
 
 Alternatively, you can use [Docker Compose](https://docs.docker.com/compose/install/) to run the project.  To do so, follow these steps.
@@ -72,8 +72,8 @@ Alternatively, you can use [Docker Compose](https://docs.docker.com/compose/inst
 Create a `docker-compose.yml` file with the following content:
 ```yaml
 services:
-  home-cards:
-    build: https://github.com/Wiredista/webcards-launchpad.git#main
+  launchpad:
+    build: https://github.com/Wiredista/launchpad.git#main
     ports:
       - "3000:3000"
     volumes:
