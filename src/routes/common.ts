@@ -8,8 +8,17 @@ apiRouter.use(express.urlencoded({ extended: true }));
 
 // -- Config
 apiRouter.get("/config", (req, res) => {
-    const config = db.query(`SELECT title, admin_panel FROM config`).get();
-    res.json(config);
+    // typescript madness
+    const config = db.query(`SELECT * FROM config`).all() as Record<string, string>[];
+
+    const configObj = {} as Record<string, string>;
+    for (const { key, value } of config) {
+        configObj[key] = value;
+    }
+
+    delete configObj.password;
+
+    res.json(configObj);
 });
 
 

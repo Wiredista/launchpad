@@ -21,12 +21,12 @@ db.run(`
 
 db.run(`
     CREATE TABLE IF NOT EXISTS config (
-        title TEXT NOT NULL,
-        admin_panel TEXT NOT NULL,
-        password TEXT NOT NULL
+        key TEXT PRIMARY KEY,
+        value TEXT NOT NULL
     );
 
-    INSERT INTO config (title, admin_panel, password) VALUES ("Home Cards", "http://localhost:3001", "insecure");
+    INSERT INTO config (key, value) VALUES ("title", "🚀 LaunchPad");
+    INSERT INTO config (key, value) VALUES ("password", "default");
     `)
 
 

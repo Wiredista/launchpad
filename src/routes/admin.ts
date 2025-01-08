@@ -10,6 +10,7 @@ adminPanelRouter.use(express.urlencoded({ extended: true }));
 
 // Common routes
 import commonRouter from "./common";
+import { get } from "http";
 adminPanelRouter.use(commonRouter);
 
 // Storing sessions in memory for simplicity
@@ -17,12 +18,30 @@ const sessions: { [token: string]: number } = {
     // [token: string]: validUntil: number
 };
 
+// Functions
+function getConfig(key: string) {
+    const config = db.query(`SELECT * FROM config WHERE key = ?`).get(key) as { key: string, value: string };
+    return config.value;
+}
+
+// Check if password is correct
+const password = getConfig("password");
+if(password === "default") {
+    const hashedPassword = Bun.password.hashSync("changeme");
+    db.run(`UPDATE config SET value = ? WHERE key = "password"`, [hashedPassword]);
+    console.log("Default password has been changed to 'changeme'");
+}
+
 adminPanelRouter.post("/login", (req, res) => {
     const { password } = req.body;
-    const configPassword: { password: string } = db.query(`SELECT password FROM config`).get() as { password: string }; // I hate typescript sometimes
-    if (configPassword.password === password) {
+    const configPassword = getConfig("password");
+    if (Bun.password.verifySync(password, configPassword)) {
         const token = crypto.randomUUID();
         sessions[token] = Date.now() + 1000 * 60 * 60;
+        // print the time the token will expire as timestamp
+        // console.log(sessions[token]);
+        // this is not a timestamp...
+        console.log(new Date(sessions[token]).toLocaleString());
         res.json({ token });
         return;
     }
@@ -42,12 +61,13 @@ adminPanelRouter.use((req, res, next) => {
 
     // Extend session
     sessions[token] = Date.now() + 1000 * 60 * 60;
-    next();
 
     // Clear expired sessions
     for (const token in sessions) {
         if (sessions[token] < Date.now()) delete sessions[token];
     }
+    
+    next();
 });
 
 
@@ -97,14 +117,15 @@ adminPanelRouter.put("/cards/:id", (req, res) => {
 
 /// -- Config
 adminPanelRouter.put("/config", (req, res) => {
-    const { title, admin_panel } = req.body;
-    db.run(`UPDATE config SET title = ?, admin_panel = ?`, [title, admin_panel]);
+    const { title } = req.body;
+    db.run(`UPDATE config SET value = ? WHERE key = "title"`, [title]);
     res.json({ status: "ok" });
 });
 
 adminPanelRouter.put("/config/password", (req, res) => {
     const { password } = req.body;
-    db.run(`UPDATE config SET password = ?`, [password]);
+    const hashedPassword = Bun.password.hashSync(password);
+    db.run(`UPDATE config SET value = ? WHERE key = "password"`, [hashedPassword]);
     res.json({ status: "ok" });
 });
 
