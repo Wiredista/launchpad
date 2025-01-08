@@ -212,8 +212,11 @@
                 })
             });
 
-            if (response.ok) alert('Password updated successfully');
+            if (response.status == "ok") alert('Password updated successfully');
             else alert('Error updating password');
+
+            $("#new-password").val('');
+            $("#confirm-password").val('');
         });
         
         // Add card form
