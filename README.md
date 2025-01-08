@@ -28,7 +28,14 @@ Future features may include:
 ### 💻 Development
 This project requires [bun.js](https://bun.sh/) to run, which is an alternative to `node` and `npm` that provides out-of-the-box support for TypeScript and other features.
 
-You can install it with the following command:
+You can install it with the following command:  
+
+**Windows:**
+```batch
+powershell -c "irm bun.sh/install.ps1 | iex"
+```
+
+**Linux & macOS**
 ```bash
 curl -fsSL https://bun.sh/install | bash
 source ~/.bashrc
