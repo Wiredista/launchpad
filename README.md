@@ -1,6 +1,6 @@
 # 🚀 LaunchPad
 
-> **Note:** 📢 This project is a work in progress and some features may not be fully implemented yet.
+> **🚧 Work in progress:** This project is a work in progress and some features may not be fully implemented yet.
 
 LaunchPad is a web application that allows you to create and manage cards with links to your favorite websites, self hosted services, or anything else you want to have quick access to.
 
@@ -9,12 +9,12 @@ LaunchPad is a web application that allows you to create and manage cards with l
 Current features include:
 - Cards with custom titles, images, and links.
 - Administrator panel for configuration and card management.
-- Password protection on administrator panel.
+- Password protection on the administration panel.
 
 Future features may include:
-- Editing and reordering cards
-- Easy backup and restore of data
-- Download favicon for links
+- Editing and reordering cards.
+- Easy backup and restore of data.
+- Download favicon for links.
 
 ## 📷 Screenshots
 ![Home page](https://github.com/user-attachments/assets/95aa26dd-7ce1-475c-9c8b-9dbbd04580ae)
@@ -39,6 +39,7 @@ After installing `bun`, you can follow these steps to run the project:
 Clone the repository:
 ```bash
 git clone https://github.com/Wiredista/launchpad.git
+cd launchpad
 ```
 
 Install dependencies:
@@ -90,6 +91,10 @@ In both cases, the web interface will be available at `http://localhost:3000/`.
 If you're running the project in a server, make sure to replace `localhost` with the server's IP address.
 
 You may also want to use a reverse proxy like [Nginx](https://www.nginx.com/) or [Nginx Proxy Manager](https://nginxproxymanager.com/) to handle SSL and other configurations.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please submit issues or pull requests on [GitHub](https://github.com/Wiredista/launchpad).
 
 ## 📝 License
 
