@@ -66,6 +66,11 @@ function migrateDatabase() {
     }
     db.run("COMMIT;")
     db.run("DROP TABLE config_old;")
+
+    // Update password to use hash
+    const password = db.query("SELECT value FROM config WHERE key = 'password';").get() as { value: string };
+    const hashedPassword = Bun.password.hashSync(password.value);
+    db.run("UPDATE config SET value = ? WHERE key = 'password';", [hashedPassword]);
 }
 
 
