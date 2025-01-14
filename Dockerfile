@@ -1,4 +1,4 @@
-FROM oven/bun
+FROM oven/bun:alpine
 
 RUN mkdir /app
 WORKDIR /app

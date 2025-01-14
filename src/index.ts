@@ -9,10 +9,6 @@ const port = env.PORT || 3000;
 fs.mkdirSync("data/images", { recursive: true });
 fs.mkdirSync("data/backups", { recursive: true });
 
-
-// Preparing database
-
-
 // Common API Router
 import commonRouter from "./routes/common";
 app.use("/api", commonRouter);

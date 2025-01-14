@@ -10,7 +10,6 @@ adminPanelRouter.use(express.urlencoded({ extended: true }));
 
 // Common routes
 import commonRouter from "./common";
-import { get } from "http";
 adminPanelRouter.use(commonRouter);
 
 // Storing sessions in memory for simplicity
